@@ -4,7 +4,7 @@
                         <meta charset="utf-8" />
                         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                         <meta name="generator" content="Pelican" />
-                        <title>Andrew's Portfolio - Andrew Smith</title>
+                        <title>Andrew's Portfolio - Projects</title>
                         <link rel="stylesheet" href="/theme/css/main.css" />
         </head>
 
@@ -14,41 +14,14 @@
                         <nav><ul>
                                                 <li><a href="/pages/about-me.html">About Me</a></li>
                                                 <li><a href="/pages/resume.html">Resume</a></li>
-                                                <li><a href="/category/projects.html">Projects</a></li>
+                                                <li class="active"><a href="/category/projects.html">Projects</a></li>
                                                 <li><a href="/category/utilities.html">Utilities</a></li>
                         </ul></nav>
                 </header><!-- /#banner -->
 
                 <aside id="featured" class="body">
                     <article>
-                        <h1 class="entry-title"><a href="/python-delphi-dfm-parser.html">Python Delphi dfm parser</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2025-02-17T19:00:00-07:00">
-                Published: Mon 17 February 2025
-        </abbr>
-
-                <address class="vcard author">
-                        By                                 <a class="url fn" href="/author/andrew-smith.html">Andrew Smith</a>
-                </address>
-        <p>In <a href="/category/utilities.html">Utilities</a>.</p>
-        
-</footer><!-- /.post-info --><p>Here's a small script I was working on to help automate updating field sizes on query objects in my Delphi programs.
-It parses a given Delphi dfm file or a directory of dfm files and updates any size fields on objects matching a list to a new size.
-I frequently modify this script to update other fields as needed and it has been handy in parsing out captions and text from controls for our translation project.
-<a href="https://github.com/kalegar/dfm-parser">https://github.com/kalegar/dfm-parser</a></p>                    </article>
-                </aside><!-- /#featured -->
-                    <section id="content" class="body">
-                        <h1>Other articles</h1>
-                        <hr />
-                        <ol id="posts-list" class="hfeed">
-
-                <li><article class="hentry">
-                    <header>
-                        <h1><a href="/local-shopping-app-in-nodejs-and-vue.html" rel="bookmark"
-                               title="Permalink to Local Shopping App in Node.js and Vue">Local Shopping App in Node.js and Vue</a></h1>
-                    </header>
-
-                    <div class="entry-content">
+                        <h1 class="entry-title"><a href="/local-shopping-app-in-nodejs-and-vue.html">Local Shopping App in Node.js and Vue</a></h1>
 <footer class="post-info">
         <abbr class="published" title="2025-02-17T18:27:00-07:00">
                 Published: Mon 17 February 2025
@@ -59,12 +32,16 @@ I frequently modify this script to update other fields as needed and it has been
                 </address>
         <p>In <a href="/category/projects.html">Projects</a>.</p>
         
-</footer><!-- /.post-info -->                        <p>In my spare time in 2022 I was building a web application to help connect people in Edmonton Alberta to local shops near them.
+</footer><!-- /.post-info --><p>In my spare time in 2022 I was building a web application to help connect people in Edmonton Alberta to local shops near them.
 The project backend was built using Node.js, with a Vue frontent.
-I used a PostgreSQL database to hold data on the merchants / shops and their …</p>
-                        <a class="readmore" href="/local-shopping-app-in-nodejs-and-vue.html">read more</a>
-                    </div><!-- /.entry-content -->
-                </article></li>
+I used a PostgreSQL database to hold data on the merchants / shops and their products, and implemented a search function with many filters, including being able to search by proximity using GPS location services.
+To display a map of nearby businesses or a map of your search results, I utilized the Google Maps API.
+The site is not currently live anywhere, but you can take a look at the codebase here: https://<a href="github.com/kalegar/thelocalog">github.com/kalegar/thelocalog</a></p>                    </article>
+                </aside><!-- /#featured -->
+                    <section id="content" class="body">
+                        <h1>Other articles</h1>
+                        <hr />
+                        <ol id="posts-list" class="hfeed">
 
                 <li><article class="hentry">
                     <header>
