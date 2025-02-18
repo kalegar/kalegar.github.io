@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="english">
+        <head>
+                        <meta charset="utf-8" />
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                        <meta name="generator" content="Pelican" />
+                        <title>Andrew's Portfolio - Blog</title>
+                        <link rel="stylesheet" href="/theme/css/main.css" />
+        </head>
+
+        <body id="index" class="home">
+                <header id="banner" class="body">
+                        <h1><a href="/">Andrew's Portfolio</a></h1>
+                        <nav><ul>
+                                                <li><a href="/pages/about-me.html">About Me</a></li>
+                                                <li><a href="/pages/resume.html">Resume</a></li>
+                                                <li class="active"><a href="/category/blog.html">Blog</a></li>
+                                                <li><a href="/category/projects.html">Projects</a></li>
+                                                <li><a href="/category/utilities.html">Utilities</a></li>
+                        </ul></nav>
+                </header><!-- /#banner -->
+
+                <aside id="featured" class="body">
+                    <article>
+                        <h1 class="entry-title"><a href="/converting-user-made-databases-to-a-known-schema.html">Converting user-made databases to a known schema</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2025-01-11T10:32:00-07:00">
+                Published: Sat 11 January 2025
+        </abbr>
+
+                <address class="vcard author">
+                        By                                 <a class="url fn" href="/author/andrew-smith.html">Andrew Smith</a>
+                </address>
+        <p>In <a href="/category/blog.html">Blog</a>.</p>
+        
+</footer><!-- /.post-info --><p>At work I frequently need to take a database from our client's previous software offering and convert it to the schema and database engine we use in-house.
+Due to our clients coming from many different software offerings, some of which allow essentially customising the database schema itself, this can prove challenging and I thought I'd write an article on how we handle this process.</p>
+<p>In the best case scenario, we have prior experience with the 3rd party database schema and can use what is essentially a template that maps tables and fields to our own schema. This works when the 3rd party schema differs mostly in the naming of tables and fields with an overall structure that is largely similar.</p>
+<p>As I mentioned, this is not always the case. Often we find that the structure of the data we need to convert does not match up one to one with our own schema. To give a general example, imagine a database for storing orders for a product. Two different ways a schema could be built for this are:</p>
+<ol>
+<li>A schema where each order has foriegn key references to subtables for order items, payments, refunds</li>
+<li>A transaction ledger where every transaction (invoice, payment, refund, etc) is stored in a large transaction table.</li>
+</ol>
+<p>Converting between these two schemas is not as straight forward as mapping fields between the two databases.
+Instead we write a program that iterates over the source data and builds equivalent rows in the output database, matching the new schema. </p>
+<p>When writing such a program, we try our best to identify key identifiers (in our example these might be transaction IDs, order dates, customer IDs etc) and use them to build an in-memory representation of the new schema we need to convert in to. After testing on a few rows and confirming our representation is correct, we then iterate over the entire dataset and build the final output data.</p>
+<p>Iterating over an entire database and building rows one at a time can of course be quite slow, but there are a few tricks you can use to improve the conversion rate:</p>
+<ul>
+<li>Ensure your data access framework is configured to be read-only, forward only, and to not buffer rows if possible. </li>
+<li>Post new rows in bulk inserts inside transactions</li>
+<li>If the source database engine is too slow, consider converting the source data 1 to 1 to something like SQLite first, then having the conversion program read from there.</li>
+</ul>
+<p>To be continued.</p>                    </article>
+                </aside><!-- /#featured -->
+                <section id="extras" class="body">
+                                <div class="blogroll">
+                                        <h2>links</h2>
+                                        <ul>
+                                                        <li><a href="https://github.com/kalegar/">My Github</a></li>
+                                        </ul>
+                                </div><!-- /.blogroll -->
+                                <div class="social">
+                                        <h2>social</h2>
+                                        <ul>
+
+                                                        <li><a href="https://bsky.app/profile/kalegar.bsky.social">Bluesky</a></li>
+                                                        <li><a href="https://www.youtube.com/@Sanjy33">Youtube</a></li>
+                                        </ul>
+                                </div><!-- /.social -->
+                </section><!-- /#extras -->
+
+                <footer id="contentinfo" class="body">
+                        <address id="about" class="vcard body">
+                                Proudly powered by <a rel="nofollow" href="https://getpelican.com/">Pelican</a>, which takes great advantage of <a rel="nofollow" href="https://www.python.org/">Python</a>.
+                        </address><!-- /#about -->
+
+                        <p>The theme is by <a rel="nofollow" href="https://www.smashingmagazine.com/2009/08/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
+                </footer><!-- /#contentinfo -->
+
+        </body>
+</html>
